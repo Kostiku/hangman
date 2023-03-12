@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 
 public class Main {
     static String fileName = "russian_nouns_with_definition_5_and_more_letters.txt";
+    // too much usages, decided to place as global wrongLetters and rightLetters to reduce number of parameters
     static List<String> wrongLetters = new ArrayList<>(Arrays.asList(" ", " "));
     static List<String> rightLetters = new ArrayList<>(Arrays.asList(" ", " "));
     public static void main(String[] args) throws IOException {
@@ -52,6 +53,7 @@ public class Main {
         }
     }
     private static String[] getRandomLineFromFile() throws IOException {
+        // could not win Paths.get("src", fileName), does not work in this way, placed file in project folder
         Stream<String> fileLines = Files.lines(Paths.get(fileName));
         long randomLineNumber = ThreadLocalRandom.current().nextLong(0, fileLines.count());
         fileLines = Files.lines(Paths.get(fileName));
